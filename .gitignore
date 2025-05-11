@@ -1,0 +1,40 @@
+# Swift
+.build/
+.swiftpm/xcode/
+*.xcodeproj
+*.xcworkspace
+DerivedData/
+*.xcuserstate
+
+# macOS
+.DS_Store
+
+# Python (ADK, etc.)
+__pycache__/
+.env
+*.pyc
+
+# Misc
+*.log
+
+# IntelliJ/VS/etc
+.idea/
+.vscode/
+
+# Neovim backup files
+*.swp
+*.swo
+*.swn
+
+# Neovim swap files
+*.nvim
+
+# Neovim undo files
+*.un~
+
+# Neovim session files
+Session.vim
+
+# Neovim config directory (if using a local config)
+~/.config/nvim/
+
