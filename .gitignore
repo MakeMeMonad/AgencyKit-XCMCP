@@ -1,4 +1,4 @@
-# Swift
+# SwiftPM and Xcode
 .build/
 .swiftpm/xcode/
 *.xcodeproj
@@ -6,35 +6,31 @@
 DerivedData/
 *.xcuserstate
 
-# macOS
-.DS_Store
+# Swift source artifacts
+.swift-format-backup
 
-# Python (ADK, etc.)
+# Python
 __pycache__/
 .env
-*.pyc
+*.py[cod]
+*.pyo
 
-# Misc
-*.log
-
-# IntelliJ/VS/etc
+# JetBrains Python
 .idea/
+
+# dotNET F#/C#
+bin/
+obj/
+*.user
+*.suo
+*.dll
+*.exe
+*.pdb
+
+# VS Code project settings
 .vscode/
+.history/
 
-# Neovim backup files
-*.swp
-*.swo
-*.swn
-
-# Neovim swap files
-*.nvim
-
-# Neovim undo files
-*.un~
-
-# Neovim session files
-Session.vim
-
-# Neovim config directory (if using a local config)
-~/.config/nvim/
-
+# Logs and OS metadata
+*.log
+.DS_Store

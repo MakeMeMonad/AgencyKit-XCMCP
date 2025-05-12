@@ -1,4 +1,24 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+// SwiftFormat Header Here
+// SwiftFormat Header Here
 
-print("Hello, world!")
+// Project: AgencyKitXCMCP (com.makememonad.AgencyKitXCMCP)
+// Target: AgencyKitXCMCP (com.makememonad.AgencyKitXCMCP.AgencyKitXCMCP)
+// Relevant (LINK)
+// Purpose: BasicFileTemplate
+
+import MCP
+
+let server = Server(
+    name: "XCMCP",
+    version: "0.0.1",
+    capabilities: .init(
+	prompts: .init(listChanged: true),
+	resources: .init(subscribe: true, listChanged: true),
+	tools: .init(listChanged: true)
+    )
+)
+
+let transport = StdioTransport()
+try await server.start(transport: transport)
+await registerTools(to: server)
+// END FILE main.swift

@@ -1,18 +1,25 @@
-// swift-tools-version: 6.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version: 6.0
 
 import PackageDescription
 
 let package = Package(
     name: "AgencyKitXCMCP",
+    platforms: [
+	.macOS(.v13),
+	       ],
+    dependencies: [
+	.package(url: "https://github.com/modelcontextprotocol/swift-sdk.git", .upToNextMinor(from: "0.8.2")),
+    ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .executableTarget(
-            name: "AgencyKitXCMCP"),
-.testTarget(
-    name: "AgencyKitXCMCPTests",
-    dependencies: ["AgencyKitXCMCP"]
-),
-]
+            name: "AgencyKitXCMCP",
+	    dependencies: [
+		.product(name: "MCP", package: "swift-sdk"),
+	    ]
+	),
+	.testTarget(
+		name: "AgencyKitXCMCPTests",
+		dependencies: ["AgencyKitXCMCP"]
+	),
+    ]
 )
