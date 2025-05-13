@@ -1,13 +1,5 @@
-// swift-tools-version: 6.1
-// BEGIN FILE main.swift
-// © Gale 2025
-// Swift: 6.1 | macOS: 15.4 | Xcode: 16.3
-// Docs: README.md | Architecture: ARCHITECTURE.md | Style: STYLEGUIDE.md | Tasks: TODO.md | Changelog: CHANGELOG.md
-
-// Project: AgencyKitXCMCP (com.makememonad.AgencyKitXCMCP)
-// Target: AgencyKitXCMCP (com.makememonad.AgencyKitXCMCP.AgencyKitXCMCP)
-// Relevant (LINK)
-// Purpose: BasicFileTemplate
+// swift-tools-version: 6
+// BEGIN FILE mn.swift
 
 import MCP
 
@@ -23,5 +15,12 @@ let server=Server(
 
 let transport=StdioTransport()
 try await server.start(transport: transport)
-await registerTools(to: server)
+await server
+        .withMethodHandler(ListTools.self) { _ in ListTools.Result(tools: allTools) }
+        .withMethodHandler(CallTool.self) { params in
+                guard let handler=toolRegistry[params.name]
+                else { throw MCPError.invalidRequest("Tool not found...") }
+                return try await handler(params.arguments)
+        }
+
 // END FILE main.swift
